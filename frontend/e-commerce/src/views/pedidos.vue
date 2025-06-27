@@ -17,8 +17,10 @@
         </div>
 
         <!-- Content -->
+
         <div class="col-lg-9">
           <div class="p-4">
+              <div v-if="userpedidos.length > 0">
             <!-- Lista de Pedidos -->
             <div class=" p-2">
                     <div class="flex gap-2">
@@ -45,9 +47,16 @@
             <div class="mt-4">
               <PolarArea :data="chartData" :options="chartOptions" />
             </div>
+          </div>
 
+          <div v-else>
+            <div class="">
+              <h4>Sem pedidos registrados</h4>
+            </div>
+          </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -59,13 +68,15 @@ import { decodeJwtPayload } from '../Services/decode-jwt';
 import { ref, onMounted } from 'vue';
 import { PolarArea } from 'vue-chartjs';
 import { Chart as ChartJS, Title, Tooltip, Legend, RadialLinearScale, ArcElement } from 'chart.js';
-
+import { useRouter } from 'vue-router';
 // Registrar componentes necessários para PolarArea
 ChartJS.register(Title, Tooltip, Legend, RadialLinearScale, ArcElement);
 
 const accessToken = ref(localStorage.getItem('token'));
 const userId = ref();
 const userpedidos = ref([]);
+const router = useRouter()
+
 
 // Chart Data
 const chartData = ref({
@@ -93,13 +104,16 @@ const chartOptions = {
 // Buscar Pedidos
 const pedidos = async () => {
   try {
+    if(userId.value == undefined){
+      console.log('Não esta logado')
+  }else{
     const response = await axios.get(`http://127.0.0.1:5000/pedidos/listar-pedidos/${userId.value}`);
-    userpedidos.value = response.data.pedidos.filter(p => p.Status === "Completed");
-
+      userpedidos.value = response.data.pedidos.filter(p => p.Status === "Completed");
+      
     console.log("Pedidos filtrados:", userpedidos.value);
 
     const categorias = { Motores: 0, Sensores: 0, Placas: 0 };
-
+    
     userpedidos.value.forEach(p => {
       const desc = (p.Product.description || '').toLowerCase();
       if (desc.includes('motor')) categorias.Motores++;
@@ -116,6 +130,7 @@ const pedidos = async () => {
         data: [categorias.Motores, categorias.Sensores, categorias.Placas]
       }]
     };
+  } 
 
   } catch (error) {
     console.error("Erro ao buscar pedidos:", error);
@@ -126,7 +141,10 @@ onMounted(async () => {
   if (accessToken.value) {
     const payload = await decodeJwtPayload(accessToken.value);
     if (payload && payload.sub) userId.value = payload.sub;
+  }else{
+    router.push('/sign-in')
   }
+  console.log(userId.value)
   await pedidos();
 });
 </script>

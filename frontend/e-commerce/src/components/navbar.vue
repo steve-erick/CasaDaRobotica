@@ -212,20 +212,16 @@
     
     onMounted(async () => {
       try {
+        if (accessToken.value) {
         const isAuthenticated = await autentication();
         console.log(isAuthenticated)
         auth.value = isAuthenticated.ok ? 'Authenticated' : null;    
-        console.log(auth)
-        if (accessToken) {
-          const payload = await decodeJwtPayload(accessToken.value); // Use a função importada
-          if (payload && payload.sub) {
-            userId.value = payload.sub;
-          } else {
-            console.log('Token inválido ou sem a claim "identity".');
-          }
-        } else {
-          console.log('Nenhum token encontrado.');
-        } 
+        console.log(auth.value)
+        const payload = await decodeJwtPayload(accessToken.value);
+          if (payload && payload.sub) userId.value = payload.sub;
+        }else{
+          // router.push('/sign-in')
+        }
       } catch (error) {
         console.error('Erro ao verificar autenticação:', error);
         auth.value = null;
@@ -241,19 +237,24 @@
     
     const userdata = async () => {
       try {
-        
-        const response = await axios.get(`http://127.0.0.1:5000/users/get-user/${userId.value}` , {
-          headers: {
-            'Authorization': ' `Bearer ${accessToken}`',
+        if(accessToken.value){
+
+          const response = await axios.get(`http://127.0.0.1:5000/users/get-user/${userId.value}` , {
+            headers: {
+              'Authorization': ' `Bearer ${accessToken}`',
             }
-        });
-        // console.log('data', response.data)
-        datafromuser.value = [response.data];   
-        // console.log('datafromuser:', datafromuser.value[0].name); 
-        userName.value = datafromuser.value[0].name
-        // console.log('Name',userName.value)
-      } catch (error) {
-        console.error("Erro ao buscar dados do usuario:", error);
+          });
+          // console.log(userId.value)
+          // console.log('data', response.data)
+          datafromuser.value = [response.data];   
+          // console.log('datafromuser:', datafromuser.value[0].name); 
+          userName.value = datafromuser.value[0].name
+          // console.log('Name',userName.value)
+        }else{
+          console.log(userId.value,'userid')
+        }
+        } catch (error) {
+          console.error("Erro ao buscar dados do usuario:", error);
       }
     }
 
@@ -261,6 +262,7 @@
     
     const fetchpedidos = async () => {
       try {
+        // if(userId.value =! 'undefined'){
         // if (auth.ok) {
           const response = await axios.get(`http://127.0.0.1:5000/pedidos/listar-pedidos/${userId.value}`);
           pedidos.value = response.data.pedidos;
@@ -272,6 +274,9 @@
         // else {
         //   pedidos.value = 'Não há pedidos'
         //   }
+        // }else{
+        //   console.log('não esta logado')
+        // }
         } catch (error) {
           console.error("Erro ao buscar pedidos:", error);
         }

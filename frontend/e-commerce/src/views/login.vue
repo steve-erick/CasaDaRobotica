@@ -40,6 +40,9 @@ import axios from 'axios'
 import { autentication } from '../Services/autentication' // ajuste esse caminho conforme seu projeto
 import { useRouter } from 'vue-router'
 
+const accessToken = ref(localStorage.getItem('token'));
+
+
 // estado reativo do formulário
 const form = reactive({
   email: '',
@@ -78,16 +81,21 @@ const loginform = async () => {
 // verifica token assim que o componente é montado
 onMounted(async () => {
   try {
-    const res = await autentication();
+    if(accessToken.value){
 
-    console.log(res)
-    if (res.status == 200) {
-      const data = await res.json();
-      // router.push('/');
-    } else if (res.status === 401) {
-      mensagem.value = "Token inválido. Redirecionando para login...";
-      localStorage.removeItem('Token');
-      // router.push('/login');
+      const res = await autentication();
+      
+      console.log(res)
+      if (res.status == 200) {
+        const data = await res.json();
+        // router.push('/');
+      } else if (res.status === 401) {
+        mensagem.value = "Token inválido. Redirecionando para login...";
+        localStorage.removeItem('Token');
+        // router.push('/login');
+      }
+    }else{
+      console.log('Não esta logado')
     }
   } catch (err) {
     console.error("Erro na verificação de autenticação:", err);

@@ -8,7 +8,7 @@ import { RouterView } from 'vue-router';
   <div class="d-flex flex-col min-h-screen bg-light">
     <navbar />
     <div class="flex-grow">
-      <RouterView />
+      <router-view :key="$route.params.id" />
     </div>
     <footbar />
   </div>

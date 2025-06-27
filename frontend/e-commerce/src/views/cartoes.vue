@@ -91,11 +91,12 @@
 import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { decodeJwtPayload } from '../Services/decode-jwt';
+import { useRouter } from 'vue-router';
 
 const accessToken = ref(localStorage.getItem('token'));
 const Cards = ref([]);
 const userId = ref(null);
-
+const router = useRouter();
 const maskedRows = ref([true,true,true]);  // Estado de cada linha (true = mascarado)
 const realCardValues = ref({});  // Valores reais de Num e CVV
 
@@ -119,11 +120,11 @@ const CardsData = async () => {
 
 onMounted(async () => {
     if (accessToken.value) {
-        const payload = await decodeJwtPayload(accessToken.value);
-        if (payload && payload.sub) {
-            userId.value = payload.sub;
+          const payload = await decodeJwtPayload(accessToken.value);
+          if (payload && payload.sub) userId.value = payload.sub;
+        }else{
+          router.push('/sign-in')
         }
-    }
     await CardsData();
 });
 

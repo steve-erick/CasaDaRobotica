@@ -93,7 +93,7 @@ const submitForm = async () => {
     });
     // console.log('Resposta:', response.data);
     localStorage.setItem('token', response.data.access_token);
-    router.push('/');
+    window.location.replace('/');
   } catch (error) {
     console.error('Erro:', error);
   }

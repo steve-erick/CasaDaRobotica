@@ -1,32 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/home.vue';
-import Product from '../views/product.vue';
-import SearchProduct from '../views/SearchProduct.vue';
-import Login from '../views/login.vue';
-import Cadastro from '../views/cadastro.vue';
-import checkout from '../views/checkout.vue'
-import controlpanel  from '../views/controlpanel.vue'
-import pedidos from '../views/pedidos.vue';
-import cartoes from '../views/cartoes.vue';
-import atividade from '../views/atividade.vue';
-const routes = [
-  { path: '/', component: Home },
-  { path: '/product/:id', component: Product },
-  // { path: '/', component: SearchProduct } 
-  {path: '/sign-in', component: Login},
-  { path: '/sign-up', component: Cadastro },
-  { path: '/search/:name', component: SearchProduct },
-  { path: '/checkout', component: checkout},
-  { path: '/controlpanel', component: controlpanel},
-  { path: '/controlpanel/pedidos', component: pedidos},
-  { path: '/controlpanel/cartoes', component: cartoes},
-  { path: '/controlpanel/atividade', component: atividade}
 
+const routes = [
+  { path: '/', component: () => import('../views/home.vue') },
+  { path: '/product/:id', component: () => import('../views/product.vue') },
+  { path: '/sign-in', component: () => import('../views/login.vue') },
+  { path: '/sign-up', component: () => import('../views/cadastro.vue') },
+  { path: '/search/:name', component: () => import('../views/SearchProduct.vue') },
+  { path: '/checkout', component: () => import('../views/checkout.vue') },
+  { path: '/controlpanel', component: () => import('../views/controlpanel.vue') },
+  { path: '/controlpanel/pedidos', component: () => import('../views/pedidos.vue') },
+  { path: '/controlpanel/cartoes', component: () => import('../views/cartoes.vue') },
+  { path: '/controlpanel/atividade', component: () => import('../views/atividade.vue') }
 ];
 
 const router = createRouter({
-  history: createWebHistory(), // Use createWebHistory() para evitar erros de roteamento
+  history: createWebHistory(),
   routes
 });
 
-export default router; // 🔥 Não esqueça de exportar o router corretamente
+export default router;

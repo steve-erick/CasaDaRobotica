@@ -83,11 +83,12 @@
 import { ref, onMounted,nextTick } from 'vue'
 import { decodeJwtPayload } from '../Services/decode-jwt';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 
 const accessToken = ref(localStorage.getItem('token'));
 const datafromuser = ref([])
 const userId = ref();
-
+const router = useRouter()
 
  const userdata = async () => {
       try {        
@@ -112,16 +113,12 @@ const userId = ref();
   onMounted(async () => {
   $('#phone').mask('(00) 00000-0000')
 
-    if (accessToken) {
-        const payload = await decodeJwtPayload(accessToken.value); // Use a função importada
-        if (payload && payload.sub) {
-          userId.value = payload.sub;
-        } else {
-          console.log('Token inválido ou sem a claim "identity".');
+          if (accessToken.value) {
+          const payload = await decodeJwtPayload(accessToken.value);
+          if (payload && payload.sub) userId.value = payload.sub;
+        }else{
+          router.push('/sign-in')
         }
-      } else {
-        console.log('Nenhum token encontrado.');
-      }
     await userdata(); 
 
       })

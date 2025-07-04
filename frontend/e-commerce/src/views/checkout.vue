@@ -29,7 +29,7 @@
                         <div>
                           <img
                             :src="pedido.Product.src"
-                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;" loading="lazy">
                         </div>
                         <div class="ms-3">
                           <h5>{{ pedido.Product.name }}</h5>

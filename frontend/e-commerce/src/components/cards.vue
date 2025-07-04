@@ -4,8 +4,8 @@
                 
                 <h2 class="self-center ">{{props.text}}</h2>
                 <div class="slicker">
-                    <div class="me-2 card border " style="border: none;" v-for="(product, i) in products" :key="i"> 
-                        <img :src="product.src" class="card-img-top" alt="Imagem do produto">
+                    <div class="me-2 card custom-shadow border-0" v-for="(product, i) in products" :key="i">
+                        <img :src="product.src" loading="lazy" class="card-img-top" alt="Imagem do produto">
                         <div class="card-body">
                             <h5 class="card-text m-0">R${{ product.price }}</h5>
                             <p class="card-text text-sm">{{ product.name }}</p>
@@ -88,6 +88,17 @@
   onMounted(async () => {
     await fetchproducts(); 
     await nextTick(); 
+    
+  await import('slick-carousel')
+  await import ('slick-carousel/slick/slick.css');
+  await import ('slick-carousel/slick/slick-theme.css');
+
+  await import('jquery-mask-plugin')
+
+  // inicialize o slick-carousel (exemplo)
+  $('.seletor-do-slick').slick({
+    // opções aqui
+  })
     if (accessToken) {
         const payload = await decodeJwtPayload(accessToken.value); // Use a função importada
         if (payload && payload.sub) {
@@ -131,6 +142,8 @@
   ]
       });
     }, 500);
+
+    
   });
   
 
@@ -139,10 +152,15 @@
   <style>
   /* Certifique-se de que o Slick está formatado corretamente */
   .slick-slide {
-    margin: 10px;
-    overflow: hidden;
+    padding: 10px;
+  background: transparent !important;
+  overflow: visible !important;
 
   }
+.slicker {
+  background-color: #f4f6f8; /* ou #f0f0f0 */
+  padding: 20px 0;
+}
 
   .slick-list {
   overflow: hidden;
@@ -156,7 +174,7 @@
 .card-img-top {
   width: 100% ;
   height: 200px;
-  object-fit:fill;
+  object-fit: contain;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 
@@ -164,6 +182,27 @@
 
 .buttons{
  font-size: 0.9rem;
+}
+.custom-shadow {
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+}
+
+.custom-shadow:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+}
+
+.card-body h5 {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.card-body p {
+  font-size: 0.9rem;
+  color: #555;
 }
   </style>
   

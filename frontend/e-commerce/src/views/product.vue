@@ -4,8 +4,8 @@
     <div class="row gx-5">
       <aside class="col-lg-6">
         <div class="card prod-card border rounded-4 mb-3 d-flex justify-content-center" style="  box-shadow: 0 4px 12px rgba(0,0,0,0.1);   border-radius: 12px; height: 300px;">
-          <a data-fslightbox="mygalley" class="rounded-4 object-fill" style="height: 300px;" target="_blank" data-type="image" :href=product.src>
-            <img style="width: 100%; height: 100%; margin: auto;" class=" rounded-4 object-fill" :src=product.src />
+          <a data-fslightbox="mygalley" class="rounded-4 object-scale-down" style="height: 300px;" target="_blank" data-type="image" :href=product.src>
+            <img style="width: 100%; height: 100%; margin: auto;" class=" rounded-4 object-scale-down" :src=product.src />
           </a>
         </div>
         <div class="d-flex justify-content-center mb-3">

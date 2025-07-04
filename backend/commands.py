@@ -18,11 +18,17 @@ cursor = con.cursor()
 #         FOREIGN KEY (user_id) REFERENCES Users(id)
 #     )
 # """)
-sql = "INSERT INTO pedidos (product, user,quant,status) VALUES (?, ?, ?, ?)"
-values = (1, 4, 10, "Completed")
-cursor.execute(sql, values)
-# columns = cursor.fetchall()
+sql = "SELECT COUNT(*) FROM produtos WHERE LOWER(src) LIKE '%.jpg';"
+cursor.execute(sql)          # Executa a query primeiro
+result = cursor.fetchone()   # Pega a primeira linha do resultado
+print(result[0])             # Imprime o valor do COUNT(*)
 
+
+sql = "UPDATE produtos SET src = REPLACE(src, '.jpg', '.webp') WHERE LOWER(src) LIKE '%.jpg';"
+cursor.execute(sql)
+print(cursor.rowcount)  # Deve mostrar 22
+con.commit()
+# print(columns)
 con.commit()
 
 # Exibir os detalhes das colunas

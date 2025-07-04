@@ -16,7 +16,6 @@
                                         <router-link :to="`/controlpanel/`" class="nav-link"><i class="fas fa-user me-2"></i>Minha conta</router-link>
                                         <router-link :to="`/controlpanel/pedidos/`" class="nav-link"><i class="bi bi-clipboard me-2"></i>Pedidos</router-link>
                                         <router-link :to="`/controlpanel/cartoes/`" class="nav-link active"><i class="fas fa-credit-card me-2"></i>Meus cartões</router-link>
-                                        <router-link :to="`/controlpanel/atividade/`" class="nav-link"><i class="fas fa-chart-line me-2"></i>Atividade</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +44,7 @@
                     <img
                       :src="getImageUrl(Card.CardType)"
                       alt="Card Image"
-                      style="width: 70px; height: 70px;"
+                      style="width: 70px; height: 70px;" loading="lazy"
                     />
                   </td>
                   <td>
@@ -74,7 +73,18 @@
                   </td>
                 </tr>
               </tbody>
+                    
                                     </table>
+                                    <div class="d-flex justify-content-center align-items-center flex-column mt-4 cursor-pointer" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                                       <img
+                      :src="getImageUrl('square-icon')"
+                      alt="Card Image"
+                      style="width: 80px; height: 80px;" class="margin-0 " loading="lazy"
+                    />
+
+                    <h5 class="justify-self-center">adicione um novo cartão</h5>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -84,6 +94,41 @@
 
         </div>
     </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicionar novo cartão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="numeroCartao" class="form-label">Número do Cartão</label>
+            <input type="text" class="form-control" id="numeroCartao" placeholder="1234 5678 9012 3456">
+          </div>
+          <div class="mb-3">
+            <label for="cvv" class="form-label">CVV</label>
+            <input type="text" class="form-control" id="cvv" placeholder="123">
+          </div>
+          <div class="mb-3">
+            <label for="validade" class="form-label">Validade</label>
+            <input type="month" class="form-control" id="validade">
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Salvar</button>
+      </div>
+
+    </div>
+  </div>
 </div>
 </template>
 
@@ -131,7 +176,7 @@ onMounted(async () => {
 const baseUrl = "http://127.0.0.1:5000/images/";
 
 const getImageUrl = (filename) => {
-    return `${baseUrl}${filename}.png`;
+    return `${baseUrl}${filename}.webp`;
 };
 
 const maskValue = (value) => {

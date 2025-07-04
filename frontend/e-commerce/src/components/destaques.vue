@@ -2,13 +2,13 @@
     <div id="carouselExample" class="carousel slide">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../assets/carrousel1.png" class="bg-slate-600 d-block w-100 h-100" alt="...">
+      <img src="../assets/carrousel1.webp" loading="lazy" class="bg-slate-600 d-block w-100 h-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="../assets/Carrousel2.png" class="bg-slate-600 d-block w-100" alt="...">
+      <img src="../assets/Carrousel2.webp" loading="lazy" class="bg-slate-600 d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="../assets/Carrousel3.png" class="bg-slate-600 d-block w-100" alt="...">
+      <img src="../assets/Carrousel3.webp" loading="lazy" class="bg-slate-600 d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">

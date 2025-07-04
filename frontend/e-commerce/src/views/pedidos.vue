@@ -11,7 +11,6 @@
               <router-link :to="`/controlpanel/`" class="nav-link">Minha conta</router-link>
               <router-link :to="`/controlpanel/pedidos/`" class="nav-link active">Pedidos</router-link>
               <router-link :to="`/controlpanel/cartoes/`" class="nav-link">Meus cartões</router-link>
-              <router-link :to="`/controlpanel/atividade/`" class="nav-link">Atividade</router-link>
             </div>
           </div>
         </div>

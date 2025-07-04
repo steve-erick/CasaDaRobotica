@@ -10,7 +10,6 @@ const routes = [
   { path: '/controlpanel', component: () => import('../views/controlpanel.vue') },
   { path: '/controlpanel/pedidos', component: () => import('../views/pedidos.vue') },
   { path: '/controlpanel/cartoes', component: () => import('../views/cartoes.vue') },
-  { path: '/controlpanel/atividade', component: () => import('../views/atividade.vue') }
 ];
 
 const router = createRouter({

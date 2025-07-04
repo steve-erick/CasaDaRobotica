@@ -32,7 +32,6 @@
                                          <router-link :to="`/controlpanel/`" class="nav-link active"  href="#"><i class="fas fa-user me-2"></i>Minha conta</router-link >
                                         <router-link :to="`/controlpanel/pedidos/`" class="nav-link" href="#"><i class="bi bi-clipboard me-2"></i>Pedidos</router-link >
                                         <router-link :to="`/controlpanel/cartoes/`" class="nav-link" href="#"><i class="fas fa-credit-card me-2"></i>Meus cartões</router-link >
-                                        <router-link :to="`/controlpanel/atividade/`" class="nav-link" href="#"><i class="fas fa-chart-line me-2"></i>Atividade</router-link >
                                         </div>
                                 </div>
                             </div>

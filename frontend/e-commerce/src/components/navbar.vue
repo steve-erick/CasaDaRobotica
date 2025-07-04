@@ -1,9 +1,13 @@
   <template>  
     <nav class="navbar bg-robotic-blue border-body" style="background-color: #2CA7B8;">
       <div class="container-fluid">
-        <router-link :to="`/`" class="w-12 cursor-pointer"><img src="../assets/logo.png" alt=""></router-link>
-        <form @submit.prevent="handleSubmit" class="d-flex flex-initial w-1/2 " role="search">
-          <input v-model="search" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <router-link :to="`/`" class="w-12 cursor-pointer"><img src="../assets/logo.webp" alt=""  loading="lazy" style="width: 3rem;"></router-link>
+        <form @submit.prevent="handleSubmit" class="d-flex flex-initial w-1/2" role="search" style="gap: 10px;">
+          <div class="position-relative" style="width: 100%;" >
+            <input v-model="search" class="form-control pe-5" type="search" placeholder="Search" aria-label="Search">
+            <i class="fas fa-search position-absolute top-50 end-0 translate-middle-y me-3 text-muted"></i>
+          </div>
+
           <button class="search-button w-24 rounded-2 border-1 border-white" type="submit" style=" color: white; border: 0;">Search</button>
         </form>
     
@@ -70,7 +74,7 @@
     </div>
             <div class="card p-2 " v-if="pedido.Status == 'Pending'" style="max-height: 200px; overflow-y: auto;">
               <div class="flex flex-row">
-                <img :src="pedido.Product.src" class="img-thumbnail" style="width: 150px; height: 130px;" alt="Imagem do produto">
+                <img :src="pedido.Product.src" class="img-thumbnail" loading="lazy" style="width: 150px; height: 130px;" alt="Imagem do produto">
                 <div class="flex flex-col">
                   <p class="mb-0 p-2 text-sm">{{ pedido.Product.name }}</p>
                   <input 

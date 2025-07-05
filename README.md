@@ -1,10 +1,6 @@
-<div align="left" style="display: flex">
-  <img src="logo.webp" alt="Logo" width="50" style="vertical-align: middle;"/>
-  <h1 style="display: inline; vertical-align: middle; margin-left: 10px;">
-    Casa da Robótica
-  </h1>
-</div>
-
+<img align="right" src="https://picsum.photos/300/200" alt="image" />
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five 
+centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 ![GitHub repo size](https://img.shields.io/github/repo-size/steve-erick/CasaDaRobotica?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/steve-erick/CasaDaRobotica?style=for-the-badge)
 ![GitHub forks](https://img.shields.io/github/forks/steve-erick/CasaDaRobotica?style=for-the-badge)

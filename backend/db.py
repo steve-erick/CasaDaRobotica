@@ -165,3 +165,20 @@ class Cards(DB):
                 return(f"SQLite error occurred: {e}") 
         finally:
             self.con.close()
+     def removerCard(self,id):
+        try:
+                # print(id)
+                self.cur.execute("DELETE from cards WHERE id == ? ;",(id,))
+                self.con.commit()
+                return 'Pedido removido com sucesso'
+        except sqlite3.Error as e:
+                self.con.rollback()  # Desfaz qualquer alteração em caso de erro
+                return(f"SQLite error occurred: {e}") 
+        
+     def newcard(self,user_id,CardType,Num,Mes,Ano,CVV,Nome):
+          try:
+               self.cur.execute("INSERT into cards (user_id,CardType,Num,Mes,Ano,CVV,Nome) VALUES (?,?,?,?,?,?,?)", (user_id,CardType,Num,Mes,Ano,CVV,Nome))
+          except sqlite3.Error as e:
+                self.con.rollback()  # Desfaz qualquer alteração em caso de erro
+                return(f"SQLite error occurred: {e}") 
+               

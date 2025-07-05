@@ -17,6 +17,7 @@ cursor = con.cursor()
 #         Nome TEXT NOT NULL,
 #         FOREIGN KEY (user_id) REFERENCES Users(id)
 #     )
+
 # """)
 sql = "SELECT COUNT(*) FROM produtos WHERE LOWER(src) LIKE '%.jpg';"
 cursor.execute(sql)          # Executa a query primeiro

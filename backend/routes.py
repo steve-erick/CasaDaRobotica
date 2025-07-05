@@ -201,7 +201,7 @@ def AttAmount(id):
     Amount = request.headers.get('Amount')
     return jsonify(pedido.AttAmount(id,Amount))
 
-@pedidosroutes.route("/<int:id>/remover", methods=['GET'])
+@pedidosroutes.route("/<int:id>/remover", methods=['DELETE'])
 def removepedido(id):
     pedido = Pedidos()    
     return jsonify(pedido.removerPedido(id))
@@ -235,6 +235,26 @@ def ShowCards(id):
             } for c in result
         ]
     } 
+
+@cardsroutes.route('/<int:id>',methods=["DELETE"])
+def removecard(id):
+    card = Cards()    
+    return jsonify(card.removerCard(id))
+
+@cardsroutes.route('/', methods=["POST"])
+def newcard():
+    card = Cards()    
+    card_data = request.get_json()
+    new_card = card_data.get("card", [])[0]
+    User_id = new_card.get("User_id")
+    CardType = new_card.get("CardType")
+    Num = new_card.get("Num")
+    Mes = new_card.get("Mes")
+    Ano = new_card.get("Ano")
+    CVV = new_card.get("CVV")
+    Nome = new_card.get("Nome")
+# user_id,CardType,Num,Mes,Ano,CVV,Nome
+    return jsonify(card.newcard(User_id,CardType,Num,Mes,Ano,CVV,Nome))
 # Registro dos Blueprints
 app.register_blueprint(productsroutes)
 app.register_blueprint(pedidosroutes)

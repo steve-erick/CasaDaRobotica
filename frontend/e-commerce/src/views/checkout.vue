@@ -121,17 +121,17 @@
 
                     <hr class="my-4">
 
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between text-white">
                       <p class="mb-2">Subtotal</p>
                       <p class="mb-2">{{ totalComQuantidade }}</p>
                     </div>
 
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between text-white">
                       <p class="mb-2">Frete</p>
                       <p class="mb-2">$20.00</p>
                     </div>
 
-                    <div class="d-flex justify-content-between mb-4">
+                    <div class="d-flex justify-content-between mb-4 text-white">
                       <p class="mb-2">Total(Incl. taxes)</p>
                       <p class="mb-2">{{ totalComQuantidade + 20 }}</p>
                     </div>

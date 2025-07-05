@@ -83,6 +83,8 @@ import { ref, onMounted,nextTick } from 'vue'
 import { decodeJwtPayload } from '../Services/decode-jwt';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
+import $ from 'jquery';
+import 'jquery-mask-plugin';
 
 const accessToken = ref(localStorage.getItem('token'));
 const datafromuser = ref([])

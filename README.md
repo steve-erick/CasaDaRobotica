@@ -31,19 +31,14 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 ## 🚀 Instalando <nome_do_projeto>
 
 Para instalar o <nome_do_projeto>, siga estas etapas:
-
-Linux e macOS:
-
 ```
-<comando_de_instalação>
-```
-
-Windows:
-
-```
-<comando_de_instalação>
+<Servidor>
 cd backend
 pip i -r requirements.txt
+
+<Frontend>
+cd frontend/e-commerce
+npm run dev
 ```
 
 ## ☕ Usando <nome_do_projeto>
@@ -51,7 +46,8 @@ pip i -r requirements.txt
 Para usar <nome_do_projeto>, siga estas etapas:
 
 ```
-<exemplo_de_uso>
+<Endereço do projeto na maquina local>
+<http://localhost:300/>
 ```
 
 Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Forneça uma referência de opções para pontos de bônus!

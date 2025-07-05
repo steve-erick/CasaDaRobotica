@@ -1,4 +1,4 @@
-<img align="left" src="logo.webp" width=60px alt="Exemplo imagem">
+<img align="left" src="logo.webp" width=90px alt="Exemplo imagem">
 <h1>  Casa da Robotica</h1>
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/steve-erick/CasaDaRobotica?style=for-the-badge)

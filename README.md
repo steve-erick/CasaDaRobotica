@@ -62,7 +62,7 @@ Para acessar a api utilize as seguintes rotas:
 ```
 ###Base: http://localhost:5000
 
-📍Endpoint
+📍Endpoints
 
 <Users>
 http://localhost:5000/Users

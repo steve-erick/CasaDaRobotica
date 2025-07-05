@@ -47,7 +47,11 @@ Para usar <nome_do_projeto>, siga estas etapas:
 
 ```
 <Endereço do projeto na maquina local>
-<http://localhost:300/>
+http://localhost:3000
+
+
+<Api>
+http://localhost:5000/
 ```
 
 Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Forneça uma referência de opções para pontos de bônus!

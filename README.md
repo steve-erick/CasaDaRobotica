@@ -1,14 +1,13 @@
-<table style="border: none;">
+<table style="border: none; border-collapse: collapse;">
   <tr>
-    <td style="border: none; vertical-align: middle;">
+    <td style="border: none; vertical-align: middle; padding: 0;">
       <img src="logo.webp" alt="Logo" width="60" />
     </td>
-    <td style="border: none; vertical-align: middle;">
-      <h1 style="margin-left: 10px;">Casa da Robótica</h1>
+    <td style="border: none; vertical-align: middle; padding-left: 10px;">
+      <h1 style="margin: 0;">Casa da Robótica</h1>
     </td>
   </tr>
 </table>
-
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/steve-erick/CasaDaRobotica?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/steve-erick/CasaDaRobotica?style=for-the-badge)

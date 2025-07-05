@@ -1,4 +1,4 @@
-<div align="left">
+<div align="left" style="display: flex">
   <img src="logo.webp" alt="Logo" width="50" style="vertical-align: middle;"/>
   <h1 style="display: inline; vertical-align: middle; margin-left: 10px;">
     Casa da Robótica

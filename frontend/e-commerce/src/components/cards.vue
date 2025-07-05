@@ -2,7 +2,7 @@
     <div class="flex p-4 flex-column justify-center mt-24">
             <!-- Adicione a classe 'slicker' para o Slick -->
                 
-                <h2 class="self-center ">{{props.text}}</h2>
+                <h1 class="self-center text-3xl">{{props.text}}</h1>
                 <div class="slicker">
                     <div class="me-2 card custom-shadow border-0" v-for="(product, i) in products" :key="i">
                         <img :src="product.src" loading="lazy" class="card-img-top" alt="Imagem do produto">

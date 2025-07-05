@@ -67,7 +67,7 @@
                       ></i>
                       <i
                         class="bi bi-trash text-2xl cursor-pointer"
-                        @click="deleteCard(Card.id)"
+                        @click="openModal(i,Card.CardId)" 
                       ></i>
                     </div>
                   </td>
@@ -119,6 +119,27 @@
             <label for="validade" class="form-label">Validade</label>
             <input type="month" class="form-control" id="validade">
           </div>
+          <div class="mb-3 flex">  
+              <img
+                      :src="getImageUrl('Visa')"
+                      alt="Card Image"
+                      @click="(document.getElementById('CardType').value = 'Visa')"
+                      style="width: 70px; height: 70px;" loading="lazy"
+                    />
+                    <img
+                      :src="getImageUrl('Mastercard')"
+                      alt="Card Image"
+                      @click="(document.getElementById('CardType').value = 'Mastercard')"
+                      style="width: 70px; height: 70px;" loading="lazy"
+                    />
+                    <img
+                      :src="getImageUrl('Paypal')"
+                      alt="Card Image"
+                       @click="(document.getElementById('CardType').value = 'Paypal')"
+                      style="width: 70px; height: 70px;" loading="lazy"
+                    />
+                    <input type="hidden" name="CardType" id="CardType" onchange="NewCardType()">
+          </div>
         </form>
       </div>
 
@@ -130,6 +151,24 @@
     </div>
   </div>
 </div>
+
+<div v-if="showModal" class="modal fade show" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: block;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Confirmar Remoção</h5>
+            <button type="button" class="btn-close" id="FecharButton"@click="closeModal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Tem certeza de que deseja remover este Cartão? 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" id="cancelarButton" @click="closeModal">Cancelar</button>
+            <button type="button" class="btn btn-danger" @click="removeCard(itemToRemove)">Remover</button>
+          </div>
+        </div>
+      </div>
+</div>
 </template>
 
 <script setup>
@@ -137,13 +176,17 @@ import { ref, onMounted } from 'vue';
 import axios from 'axios';
 import { decodeJwtPayload } from '../Services/decode-jwt';
 import { useRouter } from 'vue-router';
-
+import { nextTick } from 'vue';
 const accessToken = ref(localStorage.getItem('token'));
 const Cards = ref([]);
 const userId = ref(null);
 const router = useRouter();
 const maskedRows = ref([true,true,true]);  // Estado de cada linha (true = mascarado)
-const realCardValues = ref({});  // Valores reais de Num e CVV
+const realCardValues = ref({});  // Valores reais de Num e 
+
+const showModal = ref(false); 
+const itemToRemove = ref(null);
+const indexToRemove = ref(null)
 
 const CardsData = async () => {
     try {
@@ -196,6 +239,47 @@ const viewCard = (card) => {
 const deleteCard = (id) => {
     console.log('Deletar:', id);
 };
+
+const openModal = async (index,id) => {
+      itemToRemove.value = id;
+      indexToRemove.value = index;
+      // console.log(id)
+      // console.log(index)
+      showModal.value = true;
+      await nextTick(); // ESPERA o Vue montar o DOM
+    
+      return new Promise((resolve) => {
+        const close = () => {
+          showModal.value = false;
+          resolve();
+        };
+        
+    
+        document.getElementById('cancelarButton').onclick = close;
+        document.getElementById('FecharButton').onclick = close;
+      });
+    };
+    
+    // Close the modal
+    const closeModal = () => {
+      showModal.value = false;
+    };
+
+const removeCard = (id) => {
+        console.log(id)
+        const response = axios.delete(`http://127.0.0.1:5000/Cards/${id}`);
+        console.log(response)
+        // console.log(indexToRemove)
+        Cards.value.splice(indexToRemove.value, 1); 
+        itemToRemove.value = null;
+        indexToRemove.value = null
+        closeModal();
+    }
+
+    const NewCardType = () => {
+      card = document.getElementById('CardType').value
+      
+    }
 </script>
 
 <style>

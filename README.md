@@ -1,3 +1,4 @@
+<img src="logo.png alt="logo">
 # Casa da Robotica
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/steve-erick/CasaDaRobotica?style=for-the-badge)

@@ -30,7 +30,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 
 ## 🚀 Instalando CasaDaRobotica
 
-Para instalar o <nome_do_projeto>, siga estas etapas:
+Para instalar o CasaDaRobotica, siga estas etapas:
 ```
 <Servidor>
 cd backend
@@ -61,6 +61,8 @@ Para acessar a api utilize as seguintes rotas:
 
 ```
 ###Base: http://localhost:5000
+
+📍Endpoint
 
 <Users>
 http://localhost:5000/Users

@@ -42,6 +42,8 @@ Windows:
 
 ```
 <comando_de_instalação>
+cd backend
+pip i -r requirements.txt
 ```
 
 ## ☕ Usando <nome_do_projeto>

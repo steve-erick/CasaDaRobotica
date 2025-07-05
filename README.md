@@ -1,6 +1,6 @@
 <p align="left" style="display: flex; align-items: center;">
   <img src="logo.webp" alt="Logo" width="60" style="margin-right: 10px;" />
-  <h1 style="font-size: 2em; font-weight: bold;">Casa da Robótica</h1>
+  <span style="font-size: 2rem; font-weight: bold;">Casa da Robótica</span>
 </p>
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/steve-erick/CasaDaRobotica?style=for-the-badge)

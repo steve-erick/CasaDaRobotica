@@ -1,8 +1,7 @@
-<div style="display:flex;">
-  
-<img src="logo.webp" alt="Exemplo imagem">
-<h1>  Casa da Robotica</h1>
-</div>
+<p align="left" style="display: flex; align-items: center;">
+  <img src="logo.webp" alt="Logo" width="60" style="margin-right: 10px;" />
+  <span style="font-size: 2em; font-weight: bold;">Casa da Robótica</span>
+</p>
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/steve-erick/CasaDaRobotica?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/steve-erick/CasaDaRobotica?style=for-the-badge)

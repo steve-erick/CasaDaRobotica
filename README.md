@@ -1,7 +1,11 @@
-<table>
+<table style="border: none;">
   <tr>
-    <td valign="middle"><img src="logo.webp" alt="Logo" width="60" /></td>
-    <td valign="middle"><h1 style="margin-left: 10px;">Casa da Robótica</h1></td>
+    <td style="border: none; vertical-align: middle;">
+      <img src="logo.webp" alt="Logo" width="60" />
+    </td>
+    <td style="border: none; vertical-align: middle;">
+      <h1 style="margin-left: 10px;">Casa da Robótica</h1>
+    </td>
   </tr>
 </table>
 

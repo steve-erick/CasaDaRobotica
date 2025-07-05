@@ -1,5 +1,8 @@
-<img src="logo.png" alt="Exemplo imagem">
-# Casa da Robotica
+<div style="display:flex;">
+  
+<img src="logo.webp" alt="Exemplo imagem">
+<h1>  Casa da Robotica</h1>
+</div>
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/steve-erick/CasaDaRobotica?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/steve-erick/CasaDaRobotica?style=for-the-badge)

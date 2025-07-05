@@ -28,7 +28,7 @@ Antes de começar, verifique se você atendeu aos seguintes requisitos:
 - Você tem uma máquina `<Windows / Linux / Mac>`. Indique qual sistema operacional é compatível / não compatível.
 - Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
 
-## 🚀 Instalando <nome_do_projeto>
+## 🚀 Instalando CasaDaRobotica
 
 Para instalar o <nome_do_projeto>, siga estas etapas:
 ```
@@ -41,9 +41,9 @@ cd frontend/e-commerce
 npm run dev
 ```
 
-## ☕ Usando <nome_do_projeto>
+## ☕ Usando CasaDaRobotica
 
-Para usar <nome_do_projeto>, siga estas etapas:
+Para usar CasaDaRobotica, siga estas etapas:
 
 ```
 <Endereço do projeto na maquina local>
@@ -54,6 +54,24 @@ http://localhost:3000
 http://localhost:5000/
 ```
 
+
+## ☕ Rotas
+
+Para acessar a api utilize as seguintes rotas:
+
+```
+Base: http://localhost:5000
+
+<Users>
+http://localhost:5000/Users
+
+/get-user/<id>  [GET] - Acessa as informações do usuario com base no id
+/cadastro [POST] - Cadastrar novos usuarios na loja
+/login [POST] - Fazer login no sistema
+
+Ao realizar o login ou cadastro um token é gerado no LocalStorage este token é utilizado em cada requisição Authorization: Bearer <seu_token_aqui>
+
+```
 Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Forneça uma referência de opções para pontos de bônus!
 
 ## 📫 Contribuindo para <nome_do_projeto>

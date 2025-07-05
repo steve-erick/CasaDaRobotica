@@ -74,9 +74,9 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
   <tr>
     <td align="center">
       <a href="#" title="defina o título do link">
-        <img src="https://https://avatars.githubusercontent.com/steve-erick/u/31936044" width="100px;" alt="Foto do steve-erick no GitHub"/><br>
+          <img src="https://avatars.githubusercontent.com/steve-erick" width="100px;" alt="Foto do steve-erick no GitHub"/><br>
         <sub>
-          <b>Iuri Silva</b>
+          <b>steve-erick</b>
         </sub>
       </a>
     </td>

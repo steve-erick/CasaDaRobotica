@@ -128,7 +128,8 @@ def get_product_data(id):
             "description": produto[2],
             "price": produto[3],
             "src": get_image_url(produto[4]),
-            "special": produto[5]
+            "special": produto[5],
+            "long_description": produto[6]
         }
     else:
         return None
@@ -145,7 +146,8 @@ def listar_produtos():
                 "description": p[2],
                 "price": p[3],
                 "src": get_image_url(p[4]),
-                "special": p[5]
+                "special": p[5],
+                "long_description": p[6]
             } for p in lista_produtos
         ]
     }

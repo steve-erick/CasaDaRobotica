@@ -90,7 +90,9 @@
   <div>
     <div class="d-flex justify-center flex-col items-center">
       <h1>Descrição</h1>
-      <p>{{ product.description }}</p>
+
+        <div v-html=" product.long_description " class="description" > </div>
+
     </div>
   </div>
 
@@ -186,4 +188,58 @@ const newpedido = async (Product, User) => {
 .subimg:hover {
   transform: scale(1.20); /* aumenta em 8% */
   }
+
+  .description h3{
+    font-size: 1.5rem
+  }
+
+  .description{
+    text-align: center;
+  }
+
+  .description table{
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+
+
+  .description ul {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .description .product-description{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .description table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+    }
+    
+    .description table th {
+        background-color: #2c3e50;
+        color: white;
+        text-align: left;
+        padding: 12px;
+    }
+    
+    .description table td {
+        padding: 10px 12px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .description table tr:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+    
+    .description table tr:hover {
+        background-color: #f1f1f1;
+    }
 </style>

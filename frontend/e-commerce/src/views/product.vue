@@ -173,8 +173,15 @@ const newpedido = async (Product, User) => {
 .prod-card{
     transition: transform 0.3s;
 }
+<style>
 
+.prod-card{
+    transition: transform 0.3s;
+}
 
+h1{
+  font-size: 2rem;
+}
 .prod-card:hover {
   transform: translateY(-5px);
 }
@@ -195,6 +202,7 @@ const newpedido = async (Product, User) => {
 
   .description{
     text-align: center;
+    margin-top: 20px;
   }
 
   .description table{
@@ -203,10 +211,8 @@ const newpedido = async (Product, User) => {
   }
 
 
-  .description ul {
-    display: flex;
-    text-align: center;
-    justify-content: center;
+  .description h2{
+    font-size: 1.3rem
   }
 
   .description .product-description{

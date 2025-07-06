@@ -70,21 +70,21 @@ Base: http://localhost:5000
 
 📍Endpoints
 
-<Users>
+### 👤 **Users**
 http://localhost:5000/users
 
 /get-user/<id>  [GET] - Acessa as informações do usuario com base no id
 /cadastro [POST] - Cadastrar um novo usuario no banco de dados
 /login [POST] - Fazer login no sistema
 
-<Products>
+### 📦 **Products**
 http://localhost:5000/products
 
 /listar-produtos [GET] - Acessa todos os produtos registrados no banco de dados
 /listar-produts/<id> [GET] - Acessa as informações do produto com base no id
 /search [GET] - Acessa todos os produtos com base em um padrão de busca
 
-<pedidos>
+### 🧾 **Pedidos**
 http://localhost:5000/pedidos
 
 /newpedido [POST] - Cadastra um novo pedido no banco de dados
@@ -92,7 +92,7 @@ http://localhost:5000/pedidos
 /<id>/Amount [GET] - Atualiza a quantidade de produtos em um pedido de um usuario com base no id e na quantidade
 /<id>/remover [DELETE] - remove um pedido do banco de dados com base no id
 
-<cards>
+### 💳 **Cards**
 http://localhost:5000/Cards
 
 /<id> [GET] - Mostra todos os cartões registrados em um usuario com base no id
@@ -100,10 +100,10 @@ http://localhost:5000/Cards
 / [POST] - Insere um novo cartão em um usuario
 
 
+> 🛡️ **Autenticação**  
+Após realizar login ou cadastro, um **token JWT** é gerado no `localStorage`.  
+Este token deve ser enviado em todas as requisições autenticadas no cabeçalho:
 
-
-
-Ao realizar o login ou cadastro um token é gerado no LocalStorage este token é utilizado em cada requisição Authorization: Bearer <seu_token_aqui>
 
 ```
 Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Forneça uma referência de opções para pontos de bônus!

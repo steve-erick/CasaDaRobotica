@@ -9,12 +9,12 @@
                         <div class="col-md-4 " style="width: 200px;">
                               <img :src=product.src class="img-fluid rounded-start" alt="..." style="height: 200px; width: 200px;">
                         </div>
-                              <div class="col-md-8">
-                                    <div class="card-body">
-                                          <h5 class="card-title">{{product.name}}</h5>
-                                          <p class="card-text">{{ product.description }}</p>
-                                          <h4 class="card-text">R$ {{ product.price }}</h4>
-                                          <div class="d-flex">
+                              <div class="col-md-8 d-flex align-items-center justify-content-center">
+                                    <div class="card-body flex flex-col p-2 gap-1">
+                                                <h5 class="card-title m-0 text-xl">{{product.name}}</h5>
+                                                <p class="card-text m-0 p-0">{{ product.description }}</p>
+                                                <h4 class=" text-xl fw-bold >" style="color: #00FF9C;">R$ {{ product.price }}</h4>
+                                          <div class="d-flex gap-2">
                                                 <router-link :to="`/product/${product.id}`" class="text-center btn" style="background: #00FF9C;">Ver mais</router-link>     
                                                 <button @click="newpedido(product.id,userId)" class="text-center btn ml-2 " style="background: #4efcfc;"><i class="bi-cart"></i>Adicionar</button>                                         
                                           </div>

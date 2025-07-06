@@ -71,11 +71,37 @@ Base: http://localhost:5000
 📍Endpoints
 
 <Users>
-http://localhost:5000/Users
+http://localhost:5000/users
 
 /get-user/<id>  [GET] - Acessa as informações do usuario com base no id
-/cadastro [POST] - Cadastrar novos usuarios na loja
+/cadastro [POST] - Cadastrar um novo usuario no banco de dados
 /login [POST] - Fazer login no sistema
+
+<Products>
+http://localhost:5000/products
+
+/listar-produtos [GET] - Acessa todos os produtos registrados no banco de dados
+/listar-produts/<id> [GET] - Acessa as informações do produto com base no id
+/search [GET] - Acessa todos os produtos com base em um padrão de busca
+
+<pedidos>
+http://localhost:5000/pedidos
+
+/newpedido [POST] - Cadastra um novo pedido no banco de dados
+/listar-pedidos [GET] - Acessa todos os pedidos registrados no banco com base no id do usuario
+/<id>/Amount [GET] - Atualiza a quantidade de produtos em um pedido de um usuario com base no id e na quantidade
+/<id>/remover [DELETE] - remove um pedido do banco de dados com base no id
+
+<cards>
+http://localhost:5000/Cards
+
+/<id> [GET] - Mostra todos os cartões registrados em um usuario com base no id
+/<id> [DELETE] - Deleta um cartão registrado em um usuario com base no id
+/ [POST] - Insere um novo cartão em um usuario
+
+
+
+
 
 Ao realizar o login ou cadastro um token é gerado no LocalStorage este token é utilizado em cada requisição Authorization: Bearer <seu_token_aqui>
 

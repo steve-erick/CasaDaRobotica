@@ -243,7 +243,7 @@ def removecard(id):
     card = Cards()    
     return jsonify(card.removerCard(id))
 
-@cardsroutes.route('/', methods=["POST"])
+@cardsroutes.route('', methods=["POST"])
 def newcard():
     card = Cards()    
     card_data = request.get_json()

@@ -9,7 +9,7 @@
           </a>
         </div>
         <div class="d-flex justify-content-center mb-3">
-          <a data-fslightbox="mygalley" class=" subimg item-thumb border mx-1 rounded-2" target="_blank" data-type="image" href="https://mdbcdn.b-cdn.net/img/bootstrap-ecommerce/items/detail1/big1.webp" >
+          <a data-fslightbox="mygalley" class=" subimg item-thumb border mx-1 rounded-2" target="_blank" data-type="image"  >
             <img width="60" height="60" class="rounded-2" :src=product.src  />
           </a>
         </div>
@@ -79,7 +79,7 @@
                 style="width: 100px;"
                 value="1"
                 >  
-                <router-link :to="`/product/${product.id}`" class="text-center btn" style="background: #00FF9C; width: 70%; height: 100%; align-content: center; font-size: larger; ">comprar agora</router-link>     
+                <router-link :to="`/checkout`" class="text-center btn" style="background: #00FF9C; width: 70%; height: 100%; align-content: center; font-size: larger; " @click="newpedido(product.id,userId)">comprar agora</router-link>     
               </div>
           </div>
         </div>
@@ -143,7 +143,7 @@ const newpedido = async (Product, User) => {
         }
       ]
     });
-      // console.log(response)
+      console.log(response)
     }
     
    
@@ -174,10 +174,6 @@ const newpedido = async (Product, User) => {
     transition: transform 0.3s;
 }
 <style>
-
-.prod-card{
-    transition: transform 0.3s;
-}
 
 h1{
   font-size: 2rem;

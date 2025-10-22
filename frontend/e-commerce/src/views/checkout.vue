@@ -59,7 +59,7 @@
               </div>
               <div class="col-lg-5">
 
-                <div class="card text-white rounded-3" style="background-color: #00C896;">
+                <div class="card text-white rounded-3" style="background-color: rgb(44, 167, 184);">
                   <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                       <h5 class="mb-0">Detalhes do Cartão</h5>
@@ -121,19 +121,19 @@
 
                     <hr class="my-4">
 
-                    <div class="d-flex justify-content-between text-white">
-                      <p class="mb-2">Subtotal</p>
-                      <p class="mb-2">{{ totalComQuantidade }}</p>
+                      <div class="d-flex justify-content-between text-white">
+                      <p class="mb-2 text-white">Subtotal</p>
+                      <p class="mb-2 text-white">{{ totalComQuantidade }}</p>
                     </div>
 
                     <div class="d-flex justify-content-between text-white">
-                      <p class="mb-2">Frete</p>
-                      <p class="mb-2">$20.00</p>
+                      <p class="mb-2 text-white">Frete</p>
+                      <p class="mb-2 text-white">$20.00</p>
                     </div>
 
                     <div class="d-flex justify-content-between mb-4 text-white">
-                      <p class="mb-2">Total(Incl. taxes)</p>
-                      <p class="mb-2">{{ totalComQuantidade + 20 }}</p>
+                      <p class="mb-2 text-white">Total(Incl. taxes)</p>
+                      <p class="mb-2 text-white">{{ totalmaistaxa }}</p>
                     </div>
 
                     <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-info btn-block btn-lg">
@@ -193,7 +193,7 @@ const showModal = ref(false); // To control the modal visibility
 const itemToRemove = ref(null); // To store the item index to remove
 const indexToRemove = ref(null)
 const pedidosindex = ref(0)
-const card = ref()
+const card = ref("mastercard")
 const totalComQuantidade = computed(() => {
   if (!pedidos.value || pedidos.value.length === 0) return 0;
 
@@ -203,6 +203,7 @@ const totalComQuantidade = computed(() => {
     return soma + (preco * quantidade);
   }, 0);
 
+  const totalmaistaxa = totalComQuantidade + 20;
   // Arredonda para 2 casas decimais
   return total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 });
@@ -265,7 +266,7 @@ const openModal = async (index,id) => {
     // Remove the item from the pedidos array
     const removePedido = (id) => {
         // console.log(id)
-        const response = axios.get(`http://127.0.0.1:5000/pedidos/${id}/remover`);
+        const response = axios.delete(`http://127.0.0.1:5000/pedidos/${id}/remover`);
       console.log(response)
         // console.log(indexToRemove)
         pedidos.value.splice(indexToRemove.value, 1); 

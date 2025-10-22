@@ -51,6 +51,8 @@
           <div v-else>
             <div class="">
               <h4>Sem pedidos registrados</h4>
+                            <p>{{ userpedidos.length }}</p>
+
             </div>
           </div>
           </div>

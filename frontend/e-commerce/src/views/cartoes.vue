@@ -106,47 +106,54 @@
       </div>
 
       <div class="modal-body">
-        <form>
+        <form @submit.prevent="NewCard">
+          <div class="mb-3">
+            <label for="nomecartao" class="form-label">Nome do titular</label>
+            <input type="text" v-model="form.Nome" class="form-control" id="nomecartao" placeholder="Erick silva" required>
+          </div>
           <div class="mb-3">
             <label for="numeroCartao" class="form-label">Número do Cartão</label>
-            <input type="text" class="form-control" id="numeroCartao" placeholder="1234 5678 9012 3456">
+            <input type="text" v-model="form.Num" class="form-control" id="numeroCartao" placeholder="1234 5678 9012 3456" required>
           </div>
           <div class="mb-3">
             <label for="cvv" class="form-label">CVV</label>
-            <input type="text" class="form-control" id="cvv" placeholder="123">
+            <input type="text" v-model="form.CVV" class="form-control" id="cvv" placeholder="123" required>
           </div>
           <div class="mb-3">
             <label for="validade" class="form-label">Validade</label>
-            <input type="month" class="form-control" id="validade">
+            <input type="month" v-model="form.Validade" class="form-control" id="validade" required>
           </div>
           <div class="mb-3 flex">  
-              <img
+              <img class="cursor-pointer"
                       :src="getImageUrl('Visa')"
                       alt="Card Image"
-                      @click="(document.getElementById('CardType').value = 'Visa')"
-                      style="width: 70px; height: 70px;" loading="lazy"
+                      @click="(NewCardType('Visa'))"
+                      style="width: 70px; height: 70px; transform: Scale(1.2);"id='Visa'    
                     />
-                    <img
+                    <img class="cursor-pointer"
                       :src="getImageUrl('Mastercard')"
                       alt="Card Image"
-                      @click="(document.getElementById('CardType').value = 'Mastercard')"
-                      style="width: 70px; height: 70px;" loading="lazy"
+                      @click="(NewCardType('Mastercard'))"
+                      style="width: 70px; height: 70px ;"id='Mastercard' 
                     />
-                    <img
+                    <img class="cursor-pointer"
                       :src="getImageUrl('Paypal')"
                       alt="Card Image"
-                       @click="(document.getElementById('CardType').value = 'Paypal')"
-                      style="width: 70px; height: 70px;" loading="lazy"
-                    />
-                    <input type="hidden" name="CardType" id="CardType" onchange="NewCardType()">
+                       @click="(NewCardType('Paypal'))"
+                      style="width: 70px; height: 70px;" 
+                    id="Paypal"/>
+                    <input  type="hidden" name="CardType" id="CardType" value="Visa">
           </div>
-        </form>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <input type="submit" class="btn btn-primary">
+          </div>
+
+      </form>
+
       </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
-      </div>
+      
 
     </div>
   </div>
@@ -172,7 +179,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted,reactive, } from 'vue';
 import axios from 'axios';
 import { decodeJwtPayload } from '../Services/decode-jwt';
 import { useRouter } from 'vue-router';
@@ -183,7 +190,6 @@ const userId = ref(null);
 const router = useRouter();
 const maskedRows = ref([true,true,true]);  // Estado de cada linha (true = mascarado)
 const realCardValues = ref({});  // Valores reais de Num e 
-
 const showModal = ref(false); 
 const itemToRemove = ref(null);
 const indexToRemove = ref(null)
@@ -232,14 +238,6 @@ const toggleMask = (index) => {
 };
 
 
-const viewCard = (card) => {
-    console.log('Ver:', card);
-};
-
-const deleteCard = (id) => {
-    console.log('Deletar:', id);
-};
-
 const openModal = async (index,id) => {
       itemToRemove.value = id;
       indexToRemove.value = index;
@@ -276,9 +274,50 @@ const removeCard = (id) => {
         closeModal();
     }
 
-    const NewCardType = () => {
-      card = document.getElementById('CardType').value
-      
+    const NewCardType = (cardtype) => {
+      document.getElementById("CardType").value = cardtype
+      const cards = ["Paypal","Visa","Mastercard"]
+      cards.forEach(card => {
+      if(card == cardtype){
+      document.getElementById(card).style.transform = "Scale(1.2)"
+      document.getElementById(card).style.marginLeft = "5px"
+      console.log(      document.getElementById("CardType").value)
+      }else{
+        document.getElementById(card).style.transform = "Scale(1)"
+      }      
+      });
+        
+    }
+    const form = reactive({
+    Num : '',
+    CVV : '' ,
+    Nome : '',
+    Validade: '',
+    })
+    const NewCard = async () => {
+    try{
+
+      const cardtype = document.getElementById("CardType").value
+      const response = await axios.post(`http://127.0.0.1:5000/Cards`, {
+      card: [
+        {
+          User_id : userId.value,
+          CardType :  cardtype,
+          Num : form.Num,
+          Mes :  form.Validade.split("-")[1],
+          Ano :  form.Validade.split("-")[0],
+          CVV : form.CVV,
+          Nome : form.Nome
+         }
+      ]
+    });
+
+    location .reload();
+
+
+  } catch {
+
+  }
     }
 </script>
 

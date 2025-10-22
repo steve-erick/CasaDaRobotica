@@ -52,7 +52,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
 
-          <div v-for="(pedido, i) in limitedpedidos()" :key="i" class="offcanvas-body">
+          <div v-for="(pedido, i) in limitedpedidos()" :key="i" class="p-1">
 
             
     <div v-if="showModal" class="modal fade show" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: block;">
@@ -128,7 +128,7 @@
     const pedidos = ref([])
     const pedidosindex = ref(0)
     // const limitedpedidos = ref([])
-    const limit = ref(3)
+    const limit = ref(4)
     const pedidoslength = ref()
     // await userdata()
     
@@ -177,7 +177,7 @@
     // Remove the item from the pedidos array
     const removePedido = (id) => {
         // console.log(id)
-        const response = axios.get(`http://127.0.0.1:5000/pedidos/${id}/remover`);
+        const response = axios.delete(`http://127.0.0.1:5000/pedidos/${id}/remover`);
       console.log(response)
         // console.log(indexToRemove)
         pedidos.value.splice(indexToRemove.value, 1); 
@@ -248,7 +248,7 @@
               'Authorization': ' `Bearer ${accessToken}`',
             }
           });
-          // console.log(userId.value)
+          console.log(userId.value)
           // console.log('data', response.data)
           datafromuser.value = [response.data];   
           // console.log('datafromuser:', datafromuser.value[0].name); 
@@ -265,26 +265,32 @@
     
     
     const fetchpedidos = async () => {
-      try {
-        // if(userId.value =! 'undefined'){
-        // if (auth.ok) {
-          const response = await axios.get(`http://127.0.0.1:5000/pedidos/listar-pedidos/${userId.value}`);
-          pedidos.value = response.data.pedidos;
-          pedidoslength.value = pedidos.value.length;
-          console.log(pedidoslength.value)
-          console.log('pedidos.value',pedidos.value)  
-          console.log('response',response.data.pedidos)
-        // }
-        // else {
-        //   pedidos.value = 'Não há pedidos'
-        //   }
-        // }else{
-        //   console.log('não esta logado')
-        // }
-        } catch (error) {
-          console.error("Erro ao buscar pedidos:", error);
-        }
-      };
+  try {
+    if (userId.value !== undefined && userId.value !== null) {
+      if (auth.value === 'Authenticated') {
+        const response = await axios.get(
+          `http://127.0.0.1:5000/pedidos/listar-pedidos/${userId.value}`,
+          {
+            headers: {
+              'Authorization': `Bearer ${accessToken.value}`,
+            }
+          }
+        );
+        pedidos.value = response.data.pedidos;
+        pedidoslength.value = pedidos.value.length;
+        console.log('pedidoslength:', pedidoslength.value);
+        console.log('pedidos.value:', pedidos.value);
+      } else {
+        pedidos.value = [];
+        console.log('Usuário não autenticado');
+      }
+    } else {
+      console.log('userId não definido:', userId.value);
+    }
+  } catch (error) {
+    console.error("Erro ao buscar pedidos:", error);
+  }
+};
     
       const limitedpedidos = () => {
       // return pedidos.value.slice(init, end);
@@ -301,7 +307,7 @@
         console.log('caiu aqui')
         pedidosindex.value = 0
       } else {
-        pedidosindex.value += 3
+        pedidosindex.value += 4
         if (pedidosindex.value >= pedidoslength.value) {
           pedidosindex.value = 0
         }

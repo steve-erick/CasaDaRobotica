@@ -178,6 +178,8 @@ class Cards(DB):
      def newcard(self,user_id,CardType,Num,Mes,Ano,CVV,Nome):
           try:
                self.cur.execute("INSERT into cards (user_id,CardType,Num,Mes,Ano,CVV,Nome) VALUES (?,?,?,?,?,?,?)", (user_id,CardType,Num,Mes,Ano,CVV,Nome))
+               self.con.commit()
+               return 'cartão inserido com sucesso'
           except sqlite3.Error as e:
                 self.con.rollback()  # Desfaz qualquer alteração em caso de erro
                 return(f"SQLite error occurred: {e}") 

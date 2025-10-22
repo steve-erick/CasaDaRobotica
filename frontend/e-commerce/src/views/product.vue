@@ -173,6 +173,7 @@ const newpedido = async (Product, User) => {
 .prod-card{
     transition: transform 0.3s;
 }
+<style>
 
 h1{
   font-size: 2rem;
